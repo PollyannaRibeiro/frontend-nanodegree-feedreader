@@ -56,20 +56,21 @@ $(function() {
         });
     });
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+    describe('Initial Entries', function(){
+        
+        beforeEach(function(done){
+            loadFeed(0, function() {
+                done();
+            });
+        });
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+        const feed = document.getElementsByClassName('feed');
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+        it('there is at least a feed container', function(){
+            expect(feed.length).not.toBe(0);
+        });
+    });
+  
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
