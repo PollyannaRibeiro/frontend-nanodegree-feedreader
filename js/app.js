@@ -20,7 +20,7 @@ var allFeeds = [
     }, {
         name: 'Linear Digressions',
         url: 'http://feeds.feedburner.com/udacity-linear-digressions'
-    }
+    },
 ];
 
 /* This function starts up our application. The Google Feed
@@ -83,6 +83,15 @@ function init() {
      });
  }
 
+function cleanFeed(){
+    
+    const feedNews =  document.getElementsByClassName('entry-link');
+
+    while (feedNews.length>0){
+        feedNews[0].parentElement.removeChild(feedNews[0]);
+    }
+
+}
 /* Google API: Loads the Feed Reader API and defines what function
  * to call when the Feed Reader API is done loading.
  */

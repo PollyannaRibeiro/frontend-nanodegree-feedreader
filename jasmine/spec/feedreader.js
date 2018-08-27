@@ -38,6 +38,9 @@ $(function() {
     });
 
     describe('The menu', function(){
+        // it checks if the menu element is hidden by default 
+        // and displays when clicked and hide when clicked again
+
         const menu = document.getElementsByClassName('menu-hidden');
         const menuIcon = document.getElementsByClassName('menu-icon-link');
         
@@ -57,6 +60,7 @@ $(function() {
     });
 
     describe('Initial Entries', function(){
+        // checks if it has at least a single entry element on feed container
         
         beforeEach(function(done){
             loadFeed(0, function() {
@@ -71,11 +75,20 @@ $(function() {
         });
     });
   
+    describe('New feed selection', function(){
+        // it checks when a new feed is loaded if the content changes
+        
+        beforeEach(function(done){
+            cleanFeed();
+            loadFeed(0, function() {
+                done();
+            });
+        });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+        let feed = document.getElementsByClassName('entry-link');
 
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+        it('content changed', function(){
+            expect(feed.length).not.toBe(0); 
+        });
+    });
 }());
