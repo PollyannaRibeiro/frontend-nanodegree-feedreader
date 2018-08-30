@@ -11,9 +11,11 @@ These tests will check:
 5. when a new feed is loaded by the `loadFeed` function, the content actually changes.
 
 
-# What did I learn in this project?
+**What did I learn in this project?**
 
 1. How to use Jasmine to write a number of tests against a pre-existing application. 
 2. The concept of Test-driven development - write tests first, all tests will initially fail. And then start writing application code to make these tests pass.
 
+**How to run this on your local machine:** 
 
+Download or Clone this repository to your local machine and open the **index.html** in a web browser.
