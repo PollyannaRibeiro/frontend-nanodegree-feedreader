@@ -35,21 +35,27 @@ $(function() {
         // it checks if the menu element is hidden by default 
         // and displays when clicked and hide when clicked again
 
-        const menu = document.getElementsByClassName('menu-hidden');
-        const menuIcon = document.getElementsByClassName('menu-icon-link');
+        const body = document.querySelector('body');
         
-        it ('is hidden', function(){
-            expect(menu.length).not.toBe(0);
-        });
-   
-        it('displays when is clicked', function(){
-            menuIcon[0].click();
-            expect(menu.length).toBe(0);
-        });
 
-        it('hides when is clicked again', function(){
-            menuIcon[0].click();
-            expect(menu.length).not.toBe(0);
+        const menuIcon = document.getElementById('hamburger-menu');
+        
+        function toggleAndCheckVisibility(expectation){
+            menuIcon.click();
+            let hidden = body.classList.contains('menu-hidden');
+            expect(hidden).toBe(expectation);
+        }
+
+        it ('is hidden', function(){
+            let hidden = body.classList.contains('menu-hidden');
+            expect(hidden).toBe(true);
+        });
+        
+        it('toggles when is clicked', function(){
+            toggleAndCheckVisibility(false);
+            toggleAndCheckVisibility(true);
+            toggleAndCheckVisibility(false);
+            toggleAndCheckVisibility(true);
         });
     });
 
