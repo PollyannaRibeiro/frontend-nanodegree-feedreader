@@ -63,16 +63,21 @@ $(function() {
         // checks if it has at least a single entry element on feed container
         
         beforeEach(function(done){
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
-        const feed = document.getElementsByClassName('feed');
+        const feedEntries = document.getElementsByClassName('entry');
 
-        it('there is at least a feed container', function(){
-            expect(feed.length).not.toBe(0);
+        it('entry is child of feed', function(){
+            for(var entry of feedEntries) {
+                expect(entry.closest('.feed')).toBeDefined();
+            }
         });
+
+        it('there is at least a single .entry elements within the .feed container', function(){
+            expect(feedEntries.length).not.toBe(0);
+        });
+
     });
   
     describe('New feed selection', function(){
