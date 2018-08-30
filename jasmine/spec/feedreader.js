@@ -19,21 +19,15 @@ $(function() {
         // each feed in allFeeds are not empty and  has a name and URL defined
 
         it('has a valid URL', function(){
-            for (let i = 0; i<allFeeds.length; i++){
-                expect(allFeeds[i].url).toBeDefined();
-                expect(allFeeds[i].url).not.toBe(null);
-                expect(allFeeds[i].url).not.toBeUndefined();
-                expect(allFeeds[i].url.length).not.toBe(0);     
-            }
+            allFeeds.forEach(function(feed){
+                expect(feed.url).toBeTruthy();
+            });
         });
 
         it('has a valid name', function(){
-            for(let i = 0; i<allFeeds.length; i++){
-                expect(allFeeds[i].name).toBeDefined();
-                expect(allFeeds[i].name).not.toBe(null);
-                expect(allFeeds[i].name).not.toBeUndefined();
-                expect(allFeeds[i].name.length).not.toBe(0); 
-            }
+            allFeeds.forEach(function(feed){
+                expect(feed.name).toBeTruthy();
+            });
         });
     });
 
