@@ -82,18 +82,35 @@ $(function() {
   
     describe('New feed selection', function(){
         // it checks when a new feed is loaded if the content changes
-        
+
+        let load1;
+        let load2;
+
+        function comparingArray(arr1, arr2){
+            if (arr1.length === arr2.length){
+                for (let i =0; i<arr1.length; i++){
+                    if(arr1[i].href !== arr2[i].href){
+                        return false;
+                    }  
+                }
+                return true;
+            } 
+            return false;
+        };
+
         beforeEach(function(done){
-            cleanFeed();
-            loadFeed(0, function() {
-                done();
-            });
+            jasmine.addCustomEqualityTester(comparingArray);
+            loadFeed(0, function(){
+                load1 = Array.from(document.getElementsByClassName('entry-link'));
+                loadFeed(1, function(){
+                    load2 = Array.from(document.getElementsByClassName('entry-link'));
+                    done();
+                });
+            }); 
         });
 
-        let feed = document.getElementsByClassName('entry-link');
-
-        it('content changed', function(){
-            expect(feed.length).not.toBe(0); 
+        it('has been changed', function(){
+            expect(load1).not.toEqual(load2); 
         });
     });
 }());
