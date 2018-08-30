@@ -66,15 +66,8 @@ $(function() {
             loadFeed(0, done);
         });
 
-        const feedEntries = document.getElementsByClassName('entry');
-
-        it('entry is child of feed', function(){
-            for(var entry of feedEntries) {
-                expect(entry.closest('.feed')).toBeDefined();
-            }
-        });
-
         it('there is at least a single .entry elements within the .feed container', function(){
+            const feedEntries = document.querySelectorAll('.feed .entry');
             expect(feedEntries.length).not.toBe(0);
         });
 
@@ -101,9 +94,9 @@ $(function() {
         beforeEach(function(done){
             jasmine.addCustomEqualityTester(comparingArray);
             loadFeed(0, function(){
-                load1 = Array.from(document.getElementsByClassName('entry-link'));
+                load1 = document.querySelector('.feed').innerHTML;
                 loadFeed(1, function(){
-                    load2 = Array.from(document.getElementsByClassName('entry-link'));
+                    load2 = document.querySelector('.feed').innerHTML;
                     done();
                 });
             }); 
